@@ -1,7 +1,8 @@
 /*This class is used to create Singleton SessionFactory.
 Whenever we use this class then make sure to map annotated 
 class to DB by using mapping tag in hibernate.cfg.xml file.
-<mapping class="com.allcorp.hibernate.DTO.AddressDTO"></mapping>*/
+<mapping class="com.allcorp.hibernate.DTO.AddressDTO"></mapping>.
+We can build jar of this class and add to lib to use it anywhere.*/
 package com.allcorp.hibernate.Util;
 
 import org.hibernate.SessionFactory;
