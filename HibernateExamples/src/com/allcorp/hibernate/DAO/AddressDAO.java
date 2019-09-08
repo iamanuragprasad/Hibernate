@@ -6,6 +6,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import com.allcorp.hibernate.DTO.AddressDTO;
+import com.allcorp.hibernate.Util.HibernateUtil;
 
 public class AddressDAO {
 	
@@ -15,7 +16,7 @@ public class AddressDAO {
 	  cfg.configure(); 
 	  cfg.addAnnotatedClass(AddressDTO.class);
 	  SessionFactory factory=cfg.buildSessionFactory(); 
-	  Session session=factory.openSession(); 
+	  Session session=factory.openSession();
 	  Transaction tx=session.beginTransaction();
 	  session.save(dto); 
 	  tx.commit(); 
@@ -44,11 +45,27 @@ public class AddressDAO {
 		Session session=factory.openSession();
 		Transaction tx=session.beginTransaction();
 		AddressDTO dto=session.get(AddressDTO.class, 1);
-		dto.setCity("Mangalore");
+		dto.setCity("Bangalore");
 		session.update(dto);
 		tx.commit();
 		session.close();
 		factory.close();
+	}
+
+	/*
+	 * Added Singleton SessionFactory logic here. 
+	 * Logic for Singleton SessionFactory
+	 * is there in Util folder in HibernateUtil.java.
+	 * Mapping Entity class should be done in XML file here always
+	 */
+	public void delete() {
+		System.out.println("Delete operation started....");
+		Session session=HibernateUtil.getFactory().openSession();
+		Transaction tx=session.beginTransaction();
+		AddressDTO address=session.get(AddressDTO.class, 1);
+		session.delete(address);
+		tx.commit();
+		session.close();
 	}
 
 }

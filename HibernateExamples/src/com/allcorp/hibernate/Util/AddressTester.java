@@ -15,6 +15,8 @@ public class AddressTester {
 		dao.fetch();
 		dao.update();
 		System.out.println("Data Udated");
+		dao.delete();
+		System.out.println("Data deleted from DataBase");
 	}
 
 }

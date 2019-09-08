@@ -4,5 +4,7 @@
 <property name="connection.password">Anurag@46</property>
 <property name="connection.url">jdbc:mysql://localhost:3306/hibernate_september</property>
 <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+<!-- Mapping tag acts as addAnnotedClass when Singleton session factory is used -->
+<mapping class="com.allcorp.hibernate.DTO.AddressDTO"></mapping>
 </session-factory>
 </hibernate-configuration>
