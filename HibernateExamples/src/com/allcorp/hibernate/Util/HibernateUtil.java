@@ -8,8 +8,6 @@ package com.allcorp.hibernate.Util;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
-import com.allcorp.hibernate.DTO.AddressDTO;
-
 public class HibernateUtil {
 	private static SessionFactory factory;
 	public static SessionFactory getFactory() {
