@@ -32,7 +32,7 @@ public class MovieDAO {
 		Session session=HibernateUtil.getFactory().openSession();
 		MovieDTO fromDb = null;
 		try {
-		String query="From MovieDTO where "+ "m_name='"+name+"'";
+		String query="From MovieDTO where "+ "m_name='"+name+"'"; // Here m_name is column name within DB.
 		Query hql=session.createQuery(query);
 		fromDb=(MovieDTO) hql.uniqueResult();
 		return fromDb;
