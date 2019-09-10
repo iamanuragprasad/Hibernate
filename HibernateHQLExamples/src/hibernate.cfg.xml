@@ -8,5 +8,6 @@
 <property name="show_sql">true</property>
 <!-- Mapping tag acts as addAnnotedClass when Singleton session factory is used -->
 <mapping class="com.allcorp.hql.DTO.MovieDTO"></mapping>
+<mapping class="com.allcorp.hql.DTO.FileDTO"></mapping>
 </session-factory>
 </hibernate-configuration>

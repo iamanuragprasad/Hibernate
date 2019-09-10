@@ -10,7 +10,7 @@ public class MovieTester {
 		  singham2.setCertificate("U/A"); 
 		  singham2.setDuration(126);
 		  singham2.setName("Singham 2");
-		dao.save(singham2);
+		//dao.save(singham2);
 		MovieDTO movie=dao.getByName("Singham 2");
 		System.out.println(movie);// override toString method in MovieDTO.
 	}
