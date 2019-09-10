@@ -40,11 +40,17 @@ public class MovieDAO {
 		String query="From MovieDTO where "+"name='"+name+"'"; //Here name is a property in  MovieDTO
 		// Notice here below we are using certificate and name( class properties) instead of column name as HQL uses class properties.
 		String query1="select certificate from MovieDTO where name='Singham 2'"; // Notice here we are using certificate and name( class properties)
-		Query hql1=session.createQuery(query);
-		Query hql=session.createQuery(query1);
-		fromDb= (MovieDTO) hql1.uniqueResult();
-		String cert=(String) hql.uniqueResult();// Based on Projection type only uniqueResult() return type is based.
+		String query2="Select certificate, duration from MovieDTO where name='Singham 2'";
+		Query hql=session.createQuery(query);
+		Query hql1=session.createQuery(query1);
+		Query hql2=session.createQuery(query2);
+		fromDb=(MovieDTO) hql.uniqueResult();
+		String cert= (String) hql1.uniqueResult();// Based on Projection type only uniqueResult() return type is based.
 		System.out.println(cert);
+		Object[] values=(Object[]) hql2.uniqueResult();
+		System.out.println(values.length);
+		System.out.println(values[0]);
+		System.out.println(values[1]);
 		return fromDb;
 		}catch(HibernateException he) {
 			he.printStackTrace();
