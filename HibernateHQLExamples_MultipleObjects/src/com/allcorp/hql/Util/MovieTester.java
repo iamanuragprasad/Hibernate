@@ -7,5 +7,7 @@ public class MovieTester {
 	public static void main(String[] args) {
 		MovieDAO dao=new MovieDAO();
 		dao.getMultipleObjects();
+		dao.update();
+		dao.updateUsingPlaceholders();
 	}
 }

@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.allcorp.hibernate.Util.HibernateUtil;
@@ -38,4 +39,29 @@ public class MovieDAO {
 			session.close();
 		}
 		}
+	
+	/* Method to update datain DB using HQl
+	 * 
+	 * */
+	public void update() {
+		Session session=HibernateUtil.getFactory().openSession();
+		Transaction tx=session.beginTransaction();
+		String hql="update MovieDTO set name='X-Men'" +" where id=2";
+		Query query=session.createQuery(hql);
+		query.executeUpdate();
+		tx.commit();
+		session.close();
+	}
+	public void updateUsingPlaceholders() {
+		Session session=HibernateUtil.getFactory().openSession();
+		Transaction tx=session.beginTransaction();
+		String hql="update MovieDTO set name=?" +" where id=?";
+		Query query=session.createQuery(hql);
+		query.setString(0, "Jungle Book");
+		query.setInteger(1, 4);
+		query.executeUpdate();
+		tx.commit();
+		session.close();
+	}
+	
 }
