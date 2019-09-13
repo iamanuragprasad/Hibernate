@@ -12,7 +12,8 @@ public class FileDAO {
 		Session session=HibernateUtil.getFactory().openSession();
 		FileDTO fileDto=null;
 		try {
-		String qry="From FileDTO where "+ "f_name='"+name+"'";
+		//String qry="From FileDTO where "+ "f_name='"+name+"'"; // Use below one.
+		String qry="From FileDTO where "+" name='"+name+"'";
 		Query hql=session.createQuery(qry);
 		fileDto=(FileDTO) hql.uniqueResult();
 		System.out.println(fileDto.getLocation());

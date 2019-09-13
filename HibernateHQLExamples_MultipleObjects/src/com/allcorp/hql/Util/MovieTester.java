@@ -8,6 +8,8 @@ public class MovieTester {
 		MovieDAO dao=new MovieDAO();
 		dao.getMultipleObjects();
 		dao.update();
-		dao.updateUsingPlaceholders();
+		dao.updateUsingPlaceholders();//This will throw exceptions as place holders are deprecated.
+		dao.updateUsingNamedParameter();
+		dao.delete();
 	}
 }

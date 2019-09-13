@@ -52,6 +52,8 @@ public class MovieDAO {
 		tx.commit();
 		session.close();
 	}
+	
+	// Since Placeholders are depricated so we below method will throw exception.
 	public void updateUsingPlaceholders() {
 		Session session=HibernateUtil.getFactory().openSession();
 		Transaction tx=session.beginTransaction();
@@ -61,6 +63,27 @@ public class MovieDAO {
 		query.setInteger(1, 4);
 		query.executeUpdate();
 		tx.commit();
+		session.close();
+	}
+	public void updateUsingNamedParameter() {
+		Session session=HibernateUtil.getFactory().openSession();
+		Transaction tx=session.beginTransaction();
+		String query="update MovieDTO set name=:mn"+" where id=:pk";
+		Query hql=session.createQuery(query);
+		hql.setParameter("mn", "JB");
+		hql.setParameter("pk", 1);
+		hql.executeUpdate();
+		tx.commit();
+		session.close();
+		}
+	public void delete() {
+		Session session=HibernateUtil.getFactory().openSession();
+		Transaction tx=session.beginTransaction();
+		String query="delete from MovieDTO where name=(:nm)";
+		Query hql=session.createQuery(query);
+		hql.setParameter("nm", "JB");
+		hql.executeUpdate();
+		tx.commit(); // If we will not commit then it will not update in DB.
 		session.close();
 	}
 	
